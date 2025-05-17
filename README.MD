@@ -1,73 +1,74 @@
+# 书签导航网站
 
+## 项目简介
 
-## 免费Chatgpt
+这是一个基于HTML+JavaScript的书签导航网站，能够自动将浏览器导出的书签转换为美观的导航页面。它提供了简单易用的批处理脚本，使您只需双击一个文件即可完成书签导入和网站预览。
 
+## 主要功能
 
-- Chatgpt 网址： https://chatgpt.com/
-      
+- **自动导入书签**：支持Chrome、Edge、Firefox等浏览器导出的书签文件
+- **分类展示**：保留浏览器中的书签文件夹结构，自动生成分类
+- **自动获取图标**：从网站获取favicon作为导航图标
+- **响应式设计**：适配各种屏幕尺寸，包括移动设备
+- **侧边栏导航**：快速跳转到不同书签分类
+- **简单部署**：静态网页设计，可部署到任何Web服务器
 
-## 特色功能
+## 快速开始
 
-aibard123.com 是一个开源导航网站，旨在为爱好人工智能的人提供一个全面的资源汇总平台。它主要包含以下四个核心功能：
+### 本地使用
 
-1. 最新AI产品介绍：展示了国内知名的AI工具和服务，为用户提供了解行业动态、快速选定合适产品的渠道。
+1. **导出书签**：从浏览器导出书签文件(通常命名为bookmarks.html)
+2. **导入书签**：双击`quick_import.bat`批处理文件，它会自动：
+   - 查找当前目录中的书签文件
+   - 导入书签并更新网站
+   - 启动本地服务器
+   - 自动在浏览器中打开预览页面
+3. **预览网站**：检查导入效果，完成后关闭命令窗口即可停止服务器
 
-2. 开源优秀项目：汇总了社区中优秀的AI项目和开源工具，可供用户学习和参考。
+### 在线部署
 
-3. AI学习网站：推荐了国内外的AI学习资源和平台，从初学者到专业人士都能找到适合自己的学习路径。
+1. **准备文件**：使用上述方法导入书签并确认效果
+2. **选择托管服务**：可以选择GitHub Pages、Netlify、Vercel等免费静态网站托管服务
+3. **上传文件**：将整个项目目录上传到托管服务
+4. **域名设置**（可选）：配置自定义域名指向您的托管服务
 
-4. AI学习框架：介绍了当前主流的AI学习框架，为用户提供了解、选择、使用框架的便捷途径。
+## 高级功能
 
+### 自动检测书签文件
 
-## 如何部署
+`quick_import.bat`会按以下顺序自动检测书签文件：
+1. bookmarks.html (Chrome/Edge标准导出名称)
+2. Bookmarks.html (Firefox标准导出名称)
+3. 任何包含"bookmark"的HTML文件
+4. 任何包含"书签"的HTML文件
 
-- 本地部署：
+### 创建教程页面
 
-1. 下载本项目：
+如果您想为某个导航项添加教程页面，可以使用以下命令：
 
-2. 进入nginx-1.24.0目录，点击nginx.exe，这时候会一闪而过，不用怕启动应该是完成了。
+```
+python update_bookmarks.py -c -n 目录名称 -t "页面标题" -u "网站URL"
+```
 
-3. 在浏览器中访问：localhost，就能够看到本项目了。
+创建的教程页面模板会在`tutorial/`目录下，编辑后可作为对应导航项的详细说明页面。
 
-- 外网部署
+## 项目结构
 
-这个网址本身就是一个静态网页，下载这个工程：
+```
+├── assets/             - 静态资源文件
+│   ├── css/            - 样式文件
+│   ├── js/             - JavaScript文件
+│   └── images/         - 图片资源
+├── index.html          - 主页面
+├── quick_import.bat    - 自动导入脚本
+├── update_bookmarks.py - 书签处理核心代码
+└── tutorial/           - 教程页面目录
+```
 
+## 技术支持
 
-1. 获取一个域名：首先需要在中国注册一个域名，可以选择国内的域名注册服务商，如阿里云、腾讯云、华为云等。
+如遇问题，请查看`bookmark_instructions.md`文件获取更多使用说明，或提交Issue获取帮助。
 
-2. 选择一个托管服务：可以选择国内的云托管服务商，如阿里云、腾讯云、华为云等。这些服务商提供了静态网站托管服务，可以很方便地将静态网页部署到服务器上。
+## 感谢
 
-3. 上传这个项目中的静态网页：将静态网页上传到服务器上，可以使用FTP等工具将本地的静态网页上传到服务器上，也可以使用云托管服务商提供的网页上传工具进行上传。
-
-4. 配置域名解析：将域名解析到服务器的IP地址上，可以在域名注册服务商的管理界面中进行配置。
-
-- AI工具导航
-
-![aibard123_screenshot](https://aibard123.com/assets/images/screenshot/shot.png)
-
-- AI日报
-
-![aibard123_screenshot](https://aibard123.com/assets/images/screenshot/aireport.png)
-
-- AI新工具
-
-![aibard123_screenshot](https://aibard123.com/assets/images/screenshot/aitools.jpg)
-
-如果想看看效果可也访问：[aibard123.com](https://aibard123.com/?github_web) 或者[aibard123.top](https://aibard123.top/?github_web)
-
-
-#### 合作：
-
-如需合作可以联系QQ；1752338621
-
-
-#### 关注AiBard123公众号
-
-AiBard123公众号推荐好玩的AI工具
-
-
-![AiBard123公众号](https://aibard123.com/assets/images/screenshot/qrcode_for_gh_dde1b429630d_258.jpg)
-
-
-感谢 [一个基于 Hugo 的静态响应式网址导航主题](https://github.com/shenweiyan/WebStack-Hugo)， 他是 在 [一个基于 Hugo 的静态响应式网址导航主题](https://github.com/shenweiyan/WebStack-Hugo)的基础上修改而来，感谢[webstack.cc](https://github.com/WebStackPage/WebStackPage.github.io) 和其他人的贡献。
+本项目基于开源的WebStack主题修改，感谢[WebStack](https://github.com/WebStackPage/WebStackPage.github.io)和其他贡献者的工作。

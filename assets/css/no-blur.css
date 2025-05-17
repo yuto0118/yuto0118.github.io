@@ -1,0 +1,105 @@
+/* 强制全局禁用模糊效果 */
+
+/* 设置CSS变量 */
+:root {
+    --blur-value: 0px !important;
+    --filter-blur: none !important;
+    --backdrop-blur: none !important;
+    --webkit-backdrop-blur: none !important;
+}
+
+/* 针对所有元素清除模糊 */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup,
+tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label,
+legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio, video,
+.page-container, .main-content, .grid-bg, .big-header-banner, .header-big, 
+#content, #sidebar, .modal-backdrop, *, *::before, *::after {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* 彻底禁用模糊类 */
+.blur, .blur-layer, .blur-bg, [class*="blur"], [class*="-blur"] {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* 处理模态框相关的模糊 */
+.modal-backdrop {
+    opacity: 0.5 !important;
+    background: rgba(0,0,0,0.5) !important;
+}
+
+/* 确保模态框关闭后不会出现模糊效果 */
+body:not(.modal-open) * {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* 针对特定元素的额外规则 */
+.header-big #search-bg {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(0,0,0,0.5) !important;
+}
+
+/* 防止内联样式通过!important设置模糊 */
+[style*="blur"] {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* 特别禁用页面加载时的初始模糊效果 */
+html.ready, html.ready body, html.ready .page-container {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* 针对页面各种状态强制无模糊 */
+html, html.loading, html.loaded, 
+body, body.modal-open, body:not(.modal-open),
+body.ready, body.loaded {
+    filter: none !important;
+    -webkit-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* 特殊处理可能带有模糊的卡片 */
+.card, .card-body, .card-header, .card-footer,
+.jumbotron, .container, .container-fluid {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* 禁用任何CSS动画可能带来的模糊效果 */
+@keyframes no-blur {
+    from, to {
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+/* 强制所有元素无模糊动画 */
+* {
+    animation: no-blur 0.001s forwards !important;
+} 
